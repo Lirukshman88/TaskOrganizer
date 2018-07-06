@@ -7,14 +7,12 @@ public class Task {
     private String name;
     private Date dueDate;
     private int estimatedTime;
-    private boolean recurrence;
 
-    public Task(String name, Date dueDate, int estimatedTime, int priority, boolean recurrence){
+    public Task(String name, Date dueDate, int estimatedTime, int priority){
         this.name = name;
         this.dueDate = dueDate;
         this.priority = priority;
         this.estimatedTime = estimatedTime;
-        this.recurrence = recurrence;
     }
 
     public String getName() {
@@ -31,5 +29,21 @@ public class Task {
 
     public int getEstimatedTime() {
         return estimatedTime;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public void setEstimatedTime(int estimatedTime) {
+        this.estimatedTime = estimatedTime;
     }
 }
