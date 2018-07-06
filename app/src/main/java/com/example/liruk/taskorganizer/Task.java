@@ -27,6 +27,17 @@ public class Task {
         return priority;
     }
 
+    public long getScore(){
+        Date now = new Date();
+        long diff = Math.abs(dueDate.getTime() - now.getTime());
+        diff = diff / (1000 * 60 * 60);
+        if(diff == 0){
+            return 0;
+        } else {
+            return (priority*estimatedTime)/diff;
+        }
+    }
+
     public int getEstimatedTime() {
         return estimatedTime;
     }
