@@ -6,10 +6,142 @@
     android:layout_height="match_parent"
     tools:context=".TaskEditor">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="New Task"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"/>
+
     <EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/title"
+        android:layout_below="@id/title"
+        android:hint="Task Name"
+        android:textColorHint="@android:color/darker_gray"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/dueDateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_alignLeft="@id/title"
+        android:text="Due Date:"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:id="@+id/dueDateSpinners"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/title"
+        android:orientation="horizontal"
+        android:layout_below="@id/dueDateTitle">
+
+        <DatePicker
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="5"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
+            android:layout_below="@id/dueDateTitle"
+            />
+
+        <TimePicker
+            android:id="@+id/time"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="3"
+            android:timePickerMode="spinner"
+            android:layout_below="@id/dueDateTitle"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/durationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/title"
+        android:layout_below="@id/dueDateSpinners"
+        android:text="Duration:"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:id="@+id/durationSpinners"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignLeft="@id/title"
+        android:layout_below="@id/durationTitle">
+
+        <Spinner
+            android:id="@+id/durationTensDigit"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            />
+
+        <Spinner
+            android:id="@+id/durationOnesDigit"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:paddingLeft="16dp"/>
+
+        <TextView
+            android:id="@+id/durationSpinnersText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hours"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/priorityTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/title"
+        android:layout_below="@id/durationSpinners"
+        android:text="Priority:"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"/>
+
+    <RatingBar
+        android:id="@+id/priorityRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/priorityTitle"
+        android:layout_alignLeft="@id/title"
+        android:rating="1"
+        android:stepSize="1"
+        android:numStars="5"/>
+
+    <EditText
+        android:id="@+id/note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/title"
+        android:layout_below="@id/priorityRating"
+        android:hint="Note:"
+        android:textColorHint="@android:color/darker_gray"
         android:ems="10"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="16dp"
@@ -19,9 +151,8 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="75dp"
+        android:layout_alignLeft="@id/title"
+        android:layout_below="@id/note"
         android:onClick="Submit"
         android:text="Submit"
         tools:layout_editor_absoluteX="16dp"
