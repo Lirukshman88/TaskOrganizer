@@ -50,6 +50,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         } else {
             date = task.getMonth() + "/" + task.getDay() + "/" + task.getYear() + "   " + task.getHour() + ":" + task.getMinutes();
         }
+
+
         String time = Integer.toString(tasks.get(position).getEstimatedTime()) + " hours";
 
         holder.name.setText(task.getName());
