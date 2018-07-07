@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">TaskOrganizer</string>
     <string name="action_settings">Settings</string>
+    <string name="new_task_title">New Task</string>
+    <string name="task_hint">Task Name</string>
+    <string name="note_hint">Notes:</string>
+    <string name="due_date_title">Due Date:</string>
+    <string name="duration_title">Duration:</string>
+    <string name="duration_spinners_text">Hours</string>
+    <string name="priority_title">Priority:</string>
+    <string name="submit_button">Submit</string>
     <string-array name="digits_array">
         <item>0</item>
         <item>1</item>

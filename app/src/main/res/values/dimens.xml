@@ -1,4 +1,9 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="dropdown_width">24dp</dimen>
+    <dimen name="left_margin">16dp</dimen>
+    <dimen name="start_margin">16dp</dimen>
+    <dimen name="top_margin">16dp</dimen>
+    <dimen name="double_padding">16dp</dimen> /* padding by single view */
+    <dimen name="single_padding">16dp</dimen>  /* padding by two views */
+    <dimen name="date_spinner_height">150dp</dimen>
 </resources>
