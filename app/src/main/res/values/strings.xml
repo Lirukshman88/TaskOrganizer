@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TaskOrganizer</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="digits_array">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+    </string-array>
+    <string-array name="priority_array">
+        <item>1 (Lowest)</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5 (Highest)</item>
+    </string-array>
+</resources>
