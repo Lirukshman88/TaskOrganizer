@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -18,13 +19,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
 
     static final int request = 1;
-    ArrayList<String> tasks = new ArrayList<>();
+    ArrayList<Task> tasks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,8 +101,22 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == request){
             if(resultCode == RESULT_OK){
-                String temp = data.getStringExtra("Data");
-                tasks.add(temp);
+                String name = data.getStringExtra("Name");
+
+                int day = data.getIntExtra("Day", 0);
+                int month = data.getIntExtra("Month", 0);
+                int year = data.getIntExtra("Year", 0);
+
+                int hour = data.getIntExtra("Hour", 0);
+                int minutes = data.getIntExtra("Minutes", 0);
+
+                int duration = data.getIntExtra("Duration", 0);
+
+                float rating = data.getFloatExtra("Rating", 0);
+
+                Task task = new Task(name, day, month, year, hour, minutes, duration, (int) rating);
+
+                tasks.add(task);
                 mAdapter.notifyDataSetChanged();
             }
         }

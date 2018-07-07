@@ -6,16 +6,45 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="10dp">
+ >
 
-    <TextView
-        android:id="@+id/title"
+    <LinearLayout
+        android:id="@+id/topRow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:textSize="16dp"
-        android:textStyle="bold" />
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/taskName"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/timeRemaining"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id= "@+id/dateLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/topRow"
+        android:layout_below="@id/topRow"
+        android:textSize="12sp"/>
+
+
 </RelativeLayout>

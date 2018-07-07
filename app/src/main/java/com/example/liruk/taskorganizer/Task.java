@@ -5,22 +5,47 @@ import java.util.Date;
 public class Task {
     private int priority;
     private String name;
-    private Date dueDate;
+    private int day;
+    private int month;
+    private int year;
+    private int hour;
+    private int minutes;
     private int estimatedTime;
 
-    public Task(String name, Date dueDate, int estimatedTime, int priority){
+    public Task(String name, int day, int month, int year, int hour, int minutes, int estimatedTime, int priority) {
         this.name = name;
-        this.dueDate = dueDate;
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.hour = hour;
+        this.minutes = minutes;
         this.priority = priority;
         this.estimatedTime = estimatedTime;
     }
+
 
     public String getName() {
         return name;
     }
 
-    public Date getDueDate() {
-        return dueDate;
+    public int getDay() {
+        return day;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMinutes() {
+        return minutes;
     }
 
     public int getPriority() {
@@ -29,7 +54,7 @@ public class Task {
 
     public long getScore(){
         Date now = new Date();
-        long diff = Math.abs(dueDate.getTime() - now.getTime());
+        long diff = (now.getTime());
         diff = diff / (1000 * 60 * 60);
         if(diff == 0){
             return 0;
@@ -44,10 +69,6 @@ public class Task {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
     }
 
     public void setPriority(int priority) {

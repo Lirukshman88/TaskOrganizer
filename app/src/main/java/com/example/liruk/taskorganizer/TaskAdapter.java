@@ -7,21 +7,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
-    private ArrayList<String> tasks;
+    private ArrayList<Task> tasks;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        private TextView mTextView;
+        private TextView name;
+        private TextView date;
+        private TextView time;
+
         private ViewHolder(View v) {
             super(v);
-            mTextView = v.findViewById(R.id.title);
+            name = v.findViewById(R.id.taskName);
+            date = v.findViewById(R.id.dateLeft);
+            time = v.findViewById(R.id.timeRemaining);
         }
     }
 
-    public TaskAdapter(ArrayList<String> list) {
+    public TaskAdapter(ArrayList<Task> list) {
         tasks = list;
     }
 
@@ -36,7 +43,18 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TaskAdapter.ViewHolder holder, int position) {
-        holder.mTextView.setText(tasks.get(position));
+        Task task = tasks.get(position);
+        String date;
+        if(task.getMinutes() < 10){
+            date = task.getMonth() + "/" + task.getDay() + "/" + task.getYear() + "  " + task.getHour() + ":0" + task.getMinutes();
+        } else {
+            date = task.getMonth() + "/" + task.getDay() + "/" + task.getYear() + "  " + task.getHour() + ":" + task.getMinutes();
+        }
+        String time = Integer.toString(tasks.get(position).getEstimatedTime()) + " hours";
+
+        holder.name.setText(task.getName());
+        holder.date.setText(date);
+        holder.time.setText(time);
     }
 
     @Override
