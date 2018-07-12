@@ -140,4 +140,20 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void openEditor(View view){
+        Task clickedTask = tasks.get(view.getId());
+
+        Intent i = new Intent(MainActivity.this, TaskEditor.class);
+
+        i.putExtra("Name", clickedTask.getName());
+        i.putExtra("Day", clickedTask.getDay());
+        i.putExtra("Month", clickedTask.getMonth());
+        i.putExtra("Year", clickedTask.getYear());
+        i.putExtra("Hour", clickedTask.getHour());
+        i.putExtra("Minutes", clickedTask.getMinutes());
+        i.putExtra("Duration", clickedTask.getEstimatedTime());
+        i.putExtra("Rating", clickedTask.getPriority());
+        startActivityForResult(i, request);
+        }
 }

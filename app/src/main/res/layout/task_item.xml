@@ -6,6 +6,8 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
+    android:id="@+id/parent_layout"
+    android:onClick="openEditor"
  >
 
     <LinearLayout

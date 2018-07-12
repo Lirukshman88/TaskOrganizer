@@ -46,7 +46,7 @@ public class NewTask extends AppCompatActivity {
         String name = taskName.getText().toString();
 
         int day = datePicker.getDayOfMonth();
-        int month = datePicker.getMonth();
+        int month = datePicker.getMonth()+1; //January == 0
         int year =  datePicker.getYear();
 
         int duration = Integer.parseInt(tensDuration.getSelectedItem().toString()) * 10 +
