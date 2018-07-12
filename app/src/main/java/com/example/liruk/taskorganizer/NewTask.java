@@ -1,7 +1,6 @@
 package com.example.liruk.taskorganizer;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,10 +11,7 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
-import java.util.Calendar;
-import java.util.Date;
-
-public class TaskEditor extends AppCompatActivity {
+public class NewTask extends AppCompatActivity {
     EditText taskName;
     DatePicker datePicker;
     TimePicker timePicker;
@@ -26,7 +22,7 @@ public class TaskEditor extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_editor);
+        setContentView(R.layout.activity_new_task);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.digits_array, android.R.layout.simple_spinner_item);

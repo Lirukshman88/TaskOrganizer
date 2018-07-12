@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TaskEditor"
+        <activity android:name=".NewTask"
             android:label="@string/new_task_title">
         </activity>
     </application>
