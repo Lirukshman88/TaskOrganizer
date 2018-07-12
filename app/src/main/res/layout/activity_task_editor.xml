@@ -1,162 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<ScrollView
+    xmlns:tools = "http://schemas.android.com/tools"
+    xmlns:android = "http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
-    tools:context=".TaskEditor">
-
-
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/left_margin"
-        android:layout_marginStart="@dimen/left_margin"
-        android:hint="@string/task_hint"
-        android:textColorHint="@android:color/darker_gray"
-        android:ems="15"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <TextView
-        android:id="@+id/dueDateTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/name"
-        android:layout_alignLeft="@id/name"
-        android:layout_alignStart="@id/name"
-        android:text="@string/due_date_title"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"/>
-
-    <LinearLayout
-        android:id="@+id/dueDateSpinners"
+    android:layout_width="match_parent">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/name"
-        android:layout_alignStart="@id/name"
-        android:orientation="horizontal"
-        android:layout_below="@id/dueDateTitle">
-
-        <DatePicker
-            android:id="@+id/date"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/date_spinner_height"
-            android:layout_weight="5"
-            android:datePickerMode="spinner"
-            android:calendarViewShown="false"
-            />
-
-        <TimePicker
-            android:id="@+id/time"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/date_spinner_height"
-            android:layout_weight="3"
-            android:timePickerMode="spinner"
-            />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/durationTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/name"
-        android:layout_alignStart="@id/name"
-        android:layout_below="@id/dueDateSpinners"
-        android:text= "@string/duration_title"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"/>
-
-    <LinearLayout
-        android:id="@+id/durationSpinners"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignLeft="@id/name"
-        android:layout_alignStart="@id/name"
-        android:layout_below="@id/durationTitle">
-
-        <Spinner
-            android:id="@+id/durationTensDigit"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textAlignment="center" />
-
-        <Spinner
-            android:id="@+id/durationOnesDigit"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:paddingLeft="@dimen/double_padding"
-            android:paddingStart="@dimen/double_padding"
-            android:paddingRight="@dimen/single_padding"
-            android:paddingEnd="@dimen/single_padding"/>
-
-        <TextView
-            android:id="@+id/durationSpinnersText"
+        android:layout_height="match_parent"
+        tools:context=".TaskEditor">
+        <EditText
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/duration_spinners_text"
-            android:paddingLeft="@dimen/single_padding"
-            android:paddingStart="@dimen/single_padding"
-            android:paddingRight="@dimen/double_padding"
-            android:paddingEnd="@dimen/double_padding"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"/>
+            android:layout_marginLeft="@dimen/left_margin"
+            android:layout_marginStart="@dimen/left_margin"
+            android:hint="@string/task_hint"
+            android:textColorHint="@android:color/darker_gray"
+            android:ems="15"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/dueDateTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_alignLeft="@id/name"
+            android:layout_alignStart="@id/name"
+            android:text="@string/due_date_title"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"/>
 
-    <TextView
-        android:id="@+id/priorityTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/name"
-        android:layout_alignStart="@id/name"
-        android:layout_below="@id/durationSpinners"
-        android:paddingTop="@dimen/single_padding"
-        android:text="@string/priority_title"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"/>
+        <LinearLayout
+            android:id="@+id/dueDateSpinners"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/name"
+            android:layout_alignStart="@id/name"
+            android:orientation="horizontal"
+            android:layout_below="@id/dueDateTitle">
 
-    <RatingBar
-        android:id="@+id/priorityRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/priorityTitle"
-        android:layout_alignLeft="@id/name"
-        android:layout_alignStart="@id/name"
-        android:rating="1"
-        android:stepSize="1"
-        android:numStars="5"/>
+            <DatePicker
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/date_spinner_height"
+                android:layout_weight="5"
+                android:datePickerMode="spinner"
+                android:calendarViewShown="false"
+                />
 
-    <EditText
-        android:id="@+id/note"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/name"
-        android:layout_alignStart="@id/name"
-        android:layout_below="@id/priorityRating"
-        android:hint="@string/note_hint"
-        android:textColorHint="@android:color/darker_gray"
-        android:ems="15"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+            <TimePicker
+                android:id="@+id/time"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/date_spinner_height"
+                android:layout_weight="3"
+                android:timePickerMode="spinner"
+                />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/name"
-        android:layout_alignStart="@id/name"
-        android:layout_below="@id/note"
-        android:onClick="Submit"
-        android:text="@string/submit_button"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="84dp" />
+        <TextView
+            android:id="@+id/durationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/name"
+            android:layout_alignStart="@id/name"
+            android:layout_below="@id/dueDateSpinners"
+            android:text= "@string/duration_title"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"/>
 
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/durationSpinners"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignLeft="@id/name"
+            android:layout_alignStart="@id/name"
+            android:layout_below="@id/durationTitle">
+
+            <Spinner
+                android:id="@+id/durationTensDigit"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textAlignment="center" />
+
+            <Spinner
+                android:id="@+id/durationOnesDigit"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:paddingLeft="@dimen/double_padding"
+                android:paddingStart="@dimen/double_padding"
+                android:paddingRight="@dimen/single_padding"
+                android:paddingEnd="@dimen/single_padding"/>
+
+            <TextView
+                android:id="@+id/durationSpinnersText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/duration_spinners_text"
+                android:paddingLeft="@dimen/single_padding"
+                android:paddingStart="@dimen/single_padding"
+                android:paddingRight="@dimen/double_padding"
+                android:paddingEnd="@dimen/double_padding"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/priorityTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/name"
+            android:layout_alignStart="@id/name"
+            android:layout_below="@id/durationSpinners"
+            android:paddingTop="@dimen/single_padding"
+            android:text="@string/priority_title"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"/>
+
+        <RatingBar
+            android:id="@+id/priorityRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/priorityTitle"
+            android:layout_alignLeft="@id/name"
+            android:layout_alignStart="@id/name"
+            android:rating="1"
+            android:stepSize="1"
+            android:numStars="5"/>
+
+        <EditText
+            android:id="@+id/note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/name"
+            android:layout_alignStart="@id/name"
+            android:layout_below="@id/priorityRating"
+            android:hint="@string/note_hint"
+            android:textColorHint="@android:color/darker_gray"
+            android:ems="15"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/name"
+            android:layout_alignStart="@id/name"
+            android:layout_below="@id/note"
+            android:onClick="Submit"
+            android:text="@string/submit_button"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="84dp" />
+
+    </RelativeLayout>
+</ScrollView>
