@@ -43,6 +43,7 @@ public class TaskEditor extends AppCompatActivity {
         taskName = findViewById(R.id.name);
         datePicker = findViewById(R.id.date);
         timePicker = findViewById(R.id.time);
+            timePicker.setIs24HourView(true);
         ratingBar = findViewById(R.id.priorityRating);
     }
 
