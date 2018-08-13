@@ -154,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("Minutes", clickedTask.getMinutes());
         i.putExtra("Duration", clickedTask.getEstimatedTime());
         i.putExtra("Rating", clickedTask.getPriority());
+        tasks.remove(view.getId());
         startActivityForResult(i, request);
         }
 }
