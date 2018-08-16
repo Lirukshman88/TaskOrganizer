@@ -11,9 +11,10 @@ import android.widget.TextView;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
-    private ArrayList<Task> tasks;
+    private List<Task> tasks;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
@@ -31,7 +32,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         }
     }
 
-    public TaskAdapter(ArrayList<Task> list) {
+    public TaskAdapter(List<Task> list) {
         tasks = list;
     }
 
@@ -60,6 +61,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.date.setText(date);
         holder.time.setText(time);
         holder.parentLayout.setId(position);
+    }
+
+    void setTasks(List<Task> mTasks){
+        tasks=mTasks;
+        notifyDataSetChanged();
     }
 
     @Override

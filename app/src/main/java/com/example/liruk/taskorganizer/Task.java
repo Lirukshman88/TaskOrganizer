@@ -1,15 +1,39 @@
 package com.example.liruk.taskorganizer;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import java.util.Date;
 
+@Entity(tableName = "task_table")
 public class Task {
+
+    @ColumnInfo(name="priority")
     private int priority;
+
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name="task")
     private String name;
+
+    @ColumnInfo(name="day")
     private int day;
+
+    @ColumnInfo(name="month")
     private int month;
+
+    @ColumnInfo(name="year")
     private int year;
+
+    @ColumnInfo(name="hour")
     private int hour;
+
+    @ColumnInfo(name="minutes")
     private int minutes;
+
+    @ColumnInfo(name="estimatedTime")
     private int estimatedTime;
 
     public Task(String name, int day, int month, int year, int hour, int minutes, int estimatedTime, int priority) {
