@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         // Set up RecyclerView with current task list
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        mAdapter = new TaskAdapter((List)(new ArrayList<Task>()));
+        mAdapter = new TaskAdapter((List<Task>)(new ArrayList<Task>()));
         mRecyclerView.setAdapter(mAdapter);
 
         taskViewModel = ViewModelProviders.of(this).get(TaskViewModel.class);
