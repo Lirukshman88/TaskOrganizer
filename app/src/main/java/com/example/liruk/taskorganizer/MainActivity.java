@@ -1,11 +1,13 @@
 package com.example.liruk.taskorganizer;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -19,15 +21,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private TaskAdapter mAdapter;
+    private TaskViewModel taskViewModel;
 
     static final int request = 1;
-    ArrayList<Task> tasks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Makes a Tasks
-                startActivityForResult(new Intent(MainActivity.this, TaskEditor.class), request);
+                startActivityForResult(new Intent(MainActivity.this, NewTask.class), request);
             }
         });
 
@@ -50,8 +51,17 @@ public class MainActivity extends AppCompatActivity {
         // Set up RecyclerView with current task list
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        mAdapter = new TaskAdapter(tasks);
+        mAdapter = new TaskAdapter((List<Task>)(new ArrayList<Task>()));
         mRecyclerView.setAdapter(mAdapter);
+
+        taskViewModel = ViewModelProviders.of(this).get(TaskViewModel.class);
+
+        taskViewModel.getAllTasks().observe(this, new Observer<List<Task>>(){
+            @Override
+            public void onChanged(@Nullable List<Task> tasks){
+                mAdapter.setTasks(tasks);
+            }
+        });
 
         //Swipe to delete functionality
         final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -68,8 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
                 // Remove item from backing list here
-                final int position = viewHolder.getAdapterPosition();
-                tasks.remove(position);
+                taskViewModel.delete(taskViewModel.getAllTasks().getValue().get(viewHolder.itemView.getId()));
                 mAdapter.notifyDataSetChanged();
             }
 
@@ -116,8 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Task task = new Task(name, day, month, year, hour, minutes, duration, (int) rating);
 
-                tasks.add(task);
-                mAdapter.notifyDataSetChanged();
+                taskViewModel.insert(task);
             }
         }
     }
@@ -143,4 +151,21 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void openEditor(View view){
+        Task clickedTask = taskViewModel.getAllTasks().getValue().get(view.getId());
+
+        Intent i = new Intent(MainActivity.this, TaskEditor.class);
+
+        i.putExtra("Name", clickedTask.getName());
+        i.putExtra("Day", clickedTask.getDay());
+        i.putExtra("Month", clickedTask.getMonth());
+        i.putExtra("Year", clickedTask.getYear());
+        i.putExtra("Hour", clickedTask.getHour());
+        i.putExtra("Minutes", clickedTask.getMinutes());
+        i.putExtra("Duration", clickedTask.getEstimatedTime());
+        i.putExtra("Rating", clickedTask.getPriority());
+        taskViewModel.delete(clickedTask);
+        startActivityForResult(i, request);
+        }
 }

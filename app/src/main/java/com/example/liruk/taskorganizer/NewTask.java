@@ -11,7 +11,7 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
-public class TaskEditor extends AppCompatActivity {
+public class NewTask extends AppCompatActivity {
     EditText taskName;
     DatePicker datePicker;
     TimePicker timePicker;
@@ -22,8 +22,7 @@ public class TaskEditor extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_editor);
-        Intent intent = getIntent();
+        setContentView(R.layout.activity_new_task);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.digits_array, android.R.layout.simple_spinner_item);
@@ -31,26 +30,15 @@ public class TaskEditor extends AppCompatActivity {
 
         tensDuration = findViewById(R.id.durationTensDigit);
         tensDuration.setAdapter(adapter);
-        tensDuration.setSelection(intent.getIntExtra("Duration",0)/10);
 
         onesDuration = findViewById(R.id.durationOnesDigit);
         onesDuration.setAdapter(adapter);
-        onesDuration.setSelection(intent.getIntExtra("Duration",0)%10);
 
         taskName = findViewById(R.id.name);
-        taskName.setText(intent.getStringExtra("Name"));
-
         datePicker = findViewById(R.id.date);
-        datePicker.updateDate(intent.getIntExtra("Year",0),
-                intent.getIntExtra("Month",0)-1,intent.getIntExtra("Day",0));
-        //-1 because month starts at 0
         timePicker = findViewById(R.id.time);
         timePicker.setIs24HourView(true);
-        timePicker.setHour(intent.getIntExtra("Hour", 0));
-        timePicker.setMinute(intent.getIntExtra("Minutes", 0));
-
         ratingBar = findViewById(R.id.priorityRating);
-        ratingBar.setRating(intent.getIntExtra("Rating",0));
     }
 
     public void Submit(View view) {

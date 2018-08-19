@@ -5,30 +5,34 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
-    private ArrayList<Task> tasks;
+    private List<Task> tasks;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         private TextView name;
         private TextView date;
         private TextView time;
+        private RelativeLayout parentLayout;
 
         private ViewHolder(View v) {
             super(v);
             name = v.findViewById(R.id.taskName);
             date = v.findViewById(R.id.dateLeft);
             time = v.findViewById(R.id.timeRemaining);
+            parentLayout = v.findViewById(R.id.parent_layout);
         }
     }
 
-    public TaskAdapter(ArrayList<Task> list) {
+    public TaskAdapter(List<Task> list) {
         tasks = list;
     }
 
@@ -39,7 +43,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         View v =  LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item, parent, false);
         return new ViewHolder(v);
     }
-
 
     @Override
     public void onBindViewHolder(@NonNull TaskAdapter.ViewHolder holder, int position) {
@@ -57,11 +60,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         holder.name.setText(task.getName());
         holder.date.setText(date);
         holder.time.setText(time);
+        holder.parentLayout.setId(position);
+    }
+
+    void setTasks(List<Task> mTasks){
+        tasks=mTasks;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
         return tasks.size();
     }
+
+
 }
 
