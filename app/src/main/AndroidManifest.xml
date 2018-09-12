@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,10 +21,11 @@
         </activity>
         <activity
             android:name=".NewTask"
-            android:label="@string/new_task_title"></activity>
+            android:label="@string/new_task_title" />
         <activity
             android:name=".TaskEditor"
-            android:label="@string/task_editor_title"></activity>
+            android:label="@string/task_editor_title" />
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
