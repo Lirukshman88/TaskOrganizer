@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
@@ -44,6 +45,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         return new ViewHolder(v);
     }
 
+    // Setup for how Task will be displayed
     @Override
     public void onBindViewHolder(@NonNull TaskAdapter.ViewHolder holder, int position) {
         Task task = tasks.get(position);
@@ -54,7 +56,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             date = task.getMonth() + "/" + task.getDay() + "/" + task.getYear() + "   " + task.getHour() + ":" + task.getMinutes();
         }
 
-        //I Like Github and it is a powerful tool for software developers
         String time = Integer.toString(tasks.get(position).getEstimatedTime()) + " hours";
 
         holder.name.setText(task.getName());
@@ -71,6 +72,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return tasks.size();
+    }
+
+    public void sortTasks(){
+        Collections.sort(tasks);
     }
 
 

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Makes a Tasks
+                //Creates a Task
                 startActivityForResult(new Intent(MainActivity.this, NewTask.class), request);
             }
         });
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<Task> tasks){
                 mAdapter.setTasks(tasks);
+                mAdapter.sortTasks();
             }
         });
 
@@ -101,10 +102,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
+        mAdapter.sortTasks();
 
     }
 
-    // Receives Tasks and adds it to the list and notifies the data set changed
+    // Receives Tasks and adds it to the list and notifies the data set has changed
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -126,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 Task task = new Task(name, day, month, year, hour, minutes, duration, (int) rating);
 
                 taskViewModel.insert(task);
+                mAdapter.sortTasks();
             }
         }
     }
@@ -152,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Lets users edit tasks
     public void openEditor(View view){
         Task clickedTask = taskViewModel.getAllTasks().getValue().get(view.getId());
 

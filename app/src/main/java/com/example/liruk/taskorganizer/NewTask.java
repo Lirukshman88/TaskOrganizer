@@ -19,6 +19,7 @@ public class NewTask extends AppCompatActivity {
     Spinner tensDuration;
     RatingBar ratingBar;
 
+    //Receive all the information a Task
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class NewTask extends AppCompatActivity {
         ratingBar = findViewById(R.id.priorityRating);
     }
 
+    //Send task back to main page
     public void Submit(View view) {
         Intent i = new Intent();
         String name = taskName.getText().toString();

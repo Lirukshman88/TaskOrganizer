@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 import java.util.Date;
 
 @Entity(tableName = "task_table")
-public class Task {
+public class Task implements Comparable<Task> {
 
     @ColumnInfo(name="priority")
     private int priority;
@@ -76,14 +76,32 @@ public class Task {
         return priority;
     }
 
+    //Calculates the score based on estimatedTime, timeLeft, priority
     public long getScore(){
         Date now = new Date();
-        long diff = (now.getTime());
-        diff = diff / (1000 * 60 * 60);
-        if(diff == 0){
+        Date due = new Date(year, month, day);
+        long diff = due.getTime() - now.getTime();
+        double timeLeft = diff/(1000*60*60);
+        if (timeLeft <= 0){
+            return 0;
+        }
+        if(priority == 5){
+            return Integer.MAX_VALUE;
+        }
+        if(estimatedTime > timeLeft){
             return 0;
         } else {
-            return (priority*estimatedTime)/diff;
+            int extra = 0;
+            if(timeLeft < 6){
+                extra = 15;
+            }
+            if(timeLeft < 12){
+                extra = 10;
+            }
+            if(timeLeft < 24){
+                extra = 5;
+            }
+            return (long)(extra + (priority*estimatedTime)/timeLeft);
         }
     }
 
@@ -101,5 +119,14 @@ public class Task {
 
     public void setEstimatedTime(int estimatedTime) {
         this.estimatedTime = estimatedTime;
+    }
+
+    @Override
+    public int compareTo(@NonNull Task task) {
+        if (task.getScore() > getScore()){
+            return 1;
+        } else {
+            return -1;
+        }
     }
 }
